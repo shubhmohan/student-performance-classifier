@@ -42,6 +42,17 @@ The target comes from the final grade **G3** (0-20): Low 0-9, Average 10-14, Hig
 6. **Explanations:** global importance via permutation importance. Per-student factors use occlusion: reset one feature to the typical value and measure the change in the predicted class probability.
 7. **Risk and advice:** risk is *At risk* if the prediction is Low or P(Low) >= 50%, *Watch* if P(Low) >= 25%. Advice comes from interpretable rules triggered by weak values and ranked by factor impact.
 
+## Results
+| Model | CV macro-F1 (5-fold, train split) |
+|---|---|
+| Gradient Boosting (selected) | 0.890 |
+| Random Forest | 0.889 |
+| Ensemble (soft vote) | 0.881 |
+| Logistic Regression | 0.850 |
+
+Held-out test set (20%, stratified): **accuracy 0.871, macro-F1 0.854**.
+Without term 1/2 grades (habits and background only): accuracy 0.641, which shows how much prior grades matter.
+
 ## Challenges and how I solved them
 - **Low accuracy without prior grades:** habits and background alone gave about 52% accuracy on 3 classes. I added the term 1 and 2 grades as inputs (they are known before the final), kept the no-grades model as a baseline, and report both.
 - **Class imbalance:** High is the smallest class. I used stratified splits, class weights and macro-F1 for model selection.
