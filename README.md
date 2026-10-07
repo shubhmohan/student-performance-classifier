@@ -104,6 +104,11 @@ flowchart LR
 
 ---
 
+## Deployed link :
+https://student-classifier.streamlit.app
+
+---
+
 ## 🧰 Tech Stack
 
 | Layer | Tool |
